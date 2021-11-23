@@ -5,8 +5,20 @@ import seaborn as sns
 
 data = pd.read_csv('dataset.csv')
 
-st.pyplot((data.head(2000)['country'].hist(bins=100)).figure)
+#st.pyplot((data.head(2000)['country'].hist(bins=100)).figure)
 
 
 def histogrammeVarDiscrete(data,var):
     return data[var].hist(bins=50).figure
+
+def cardinalite(data,var=None):
+    if(var is None):
+        return data.nunique()
+    else:
+        return data[var].nunique()
+
+
+#st.pyplot(cardinalite(data,'country'))
+st.write(cardinalite(data,['country','country_code']))
+
+
